@@ -1,0 +1,19 @@
+{
+  "name": "self-destroy-tasklist",
+  "version": "1.0.0",
+  "description": "Self Destroy Task List App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felicedeNigris/self-destroy-tasklist.git"
+  },
+  "author": "Felice DeNigris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felicedeNigris/self-destroy-tasklist/issues"
+  },
+  "homepage": "https://github.com/felicedeNigris/self-destroy-tasklist#readme"
+}
