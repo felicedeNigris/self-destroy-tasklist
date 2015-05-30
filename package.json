@@ -1,10 +1,11 @@
 {
   "name": "self-destroy-tasklist",
   "version": "1.0.0",
-  "description": "Self Destroy Task List App",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,11 +16,5 @@
   "bugs": {
     "url": "https://github.com/felicedeNigris/self-destroy-tasklist/issues"
   },
-  "homepage": "https://github.com/felicedeNigris/self-destroy-tasklist#readme",
-  "dependencies": {},
-  "devDependencies": {},
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
-  }
+  "homepage": "https://github.com/felicedeNigris/self-destroy-tasklist#readme"
 }
