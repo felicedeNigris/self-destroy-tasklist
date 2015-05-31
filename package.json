@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/felicedeNigris/self-destroy-tasklist/issues"
   },
-  "homepage": "https://github.com/felicedeNigris/self-destroy-tasklist#readme"
+  "homepage": "https://github.com/felicedeNigris/self-destroy-tasklist#readme",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
 }
