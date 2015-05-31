@@ -2,7 +2,6 @@
   "name": "self-destroy-tasklist",
   "version": "1.0.0",
   "description": "Self Destroying Tasklist",
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felicedeNigris/self-destroy-tasklist.git"
