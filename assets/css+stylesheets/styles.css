@@ -1,0 +1,40 @@
+
+.container{  
+
+  margin-top:30px;
+  padding-bottom:10px;
+  
+}
+
+ul>li>.done{
+  text-decoration: line-through;
+  color:purple;
+  background-color:#FF702E;
+  
+}
+
+.form-inline{
+  margin-top:100px;
+  margin-bottom:10px;
+}
+
+ul {
+  background-color:#C6E35F;
+}
+
+h3{
+  padding-left:10px;
+}
+
+#currentTasks-bg{
+  background-color: #C2C2CC;
+  padding:0px;
+  margin-top:-20px;
+}
+
+#form-border{
+  margin-top:20px;
+}
+#inputform{
+  width:300px;
+}
