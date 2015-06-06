@@ -12,17 +12,9 @@
     
   <title>Todo</title>
     
-<<<<<<< HEAD
   </head>
 
   <body>
-    
-  <div class ="container">  
-    <div ng-controller='todoController'> <!-- link todoController wrapper-->
-      <form name="frm" ng-submit="addTodo()">
-        <input type='text' name='newtodo' ng-model='newtodo' required />
-=======
-    <body>
     
     <div class="container">
       <div class="row">
@@ -30,11 +22,9 @@
           <h3>Task List</h3>
         </div>
       </div>
-      <div ng-controller='todoController'>
-      <!-- link todoController wrapper-->
+      <div class="row" ng-controller='todoController'><!-- link todoController wrapper-->
       <form class="form-inline" name="frm" ng-submit="addTodo()" id="form-border">
-        <input type="text" name="newtodo" ng-model="newtodo" required="" id="inputform"/>
->>>>>>> bootstrapping-the-page
+        <input type="text" name="newtodo" ng-model="newtodo" required="" id="inputform" />
         <button ng-disabled="frm.$invalid">Go</button>
         <button ng-click="clearCompleted()">Clear Completed</button>
       </form>
