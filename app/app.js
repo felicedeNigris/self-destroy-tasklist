@@ -1,20 +1,28 @@
-//console.log("Loaded Module!");
+var ToDo = angular.module('ToDo',['ngRoute']);
 
 
-var taskApp = angular.module('taskApp', [ ]);
+    ToDo.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
+      $routeProvider.when('/taskbar_view',{templateUrl:"views/taskbar_view.html"});
+      $routeProvider.otherwise({redirectTo: '/taskbar_view'});
+      $locationProvider.html5Mode({enabled:true, requireBase: false});
+      
+    }]);
 
 
-
-
-
-  taskApp.directive('addTask', function(){
-    return{
-      restrict: "E",
-      template: "Farting"
-    };
-
-  }); // closing tags for addTask directive
-
-
-
-
+    ToDo.controller('todoController',["$scope",function($scope){
+      $scope.todos = [
+        {'title': 'Get Oil Change', 'done':false}
+      ];
+      
+      $scope.addTodo = function(){
+        $scope.todos.push({'title':$scope.newtodo,'done':false});
+        $scope.newtodo = '';
+      };
+      $scope.clearCompleted = function(){
+        $scope.todos = $scope.todos.filter(function(item){
+          return !item.done;
+        });
+      };
+      
+    }]);
+ 
