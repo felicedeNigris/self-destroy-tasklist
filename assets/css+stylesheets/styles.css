@@ -6,30 +6,20 @@
   
 }
 
-ul>li>.done{
+.done{
   text-decoration: line-through;
   color:purple;
-  background-color:#FF702E;
-  
 }
 
-.form-inline{
-  margin-top:100px;
-  margin-bottom:10px;
-}
 
 ul {
   background-color:#C6E35F;
 }
 
-h3{
-  padding-left:10px;
-}
-
 #currentTasks-bg{
-  background-color: #C2C2CC;
-  padding:0px;
-  margin-top:-20px;
+  
+  margin-bottom:1px;
+  width:100%;
 }
 
 #form-border{
@@ -38,3 +28,4 @@ h3{
 #inputform{
   width:300px;
 }
+

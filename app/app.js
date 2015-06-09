@@ -2,8 +2,8 @@ var ToDo = angular.module('ToDo',['ngRoute']);
 
 
     ToDo.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
-      $routeProvider.when('/taskbar_view',{templateUrl:"views/taskbar_view.html"});
-      $routeProvider.otherwise({redirectTo: '/taskbar_view'});
+      $routeProvider.when('/',{templateUrl:"views/taskbar_view.html"});
+      $routeProvider.otherwise({redirectTo: '/'});
       $locationProvider.html5Mode({enabled:true, requireBase: false});
       
     }]);

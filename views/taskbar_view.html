@@ -1,19 +1,24 @@
 <div class="row">
   <div class="col-sm-12" id="currentTasks-bg">
-    <h3>Task List</h3>
+    <h1>Task List</h1>
   </div>
 </div> <!-- end row -->
 <div class="row" ng-controller='todoController'><!-- link todoController wrapper-->
-  <form class="form-inline" name="frm" ng-submit="addTodo()" id="form-border">
-    <input type="text" name="newtodo" ng-model="newtodo" required="" id="inputform" />
-    <button ng-disabled="frm.$invalid">Go</button>
-    <button ng-click="clearCompleted()">Clear Completed</button>
-  </form>
-  <ul>
-    <li ng-repeat="todo in todos">
-      <input type="checkbox" ng-model="todo.done" />
-      <span ng-class="{'done':todo.done}" id="donetask">{{todo.title}}</span><!-- add line-through when task is done-->
-    </li>
-  </ul>
-      
-</div><!-- end of todoController -->
+  <div class="col-sm-12">
+    <div class="jumbotron">
+      <form name="frm" ng-submit="addTodo()" id="form-border">
+        <div class="form-inline">
+          <input type="text" class="form-control" name="newtodo" ng-model="newtodo" required="" id="inputform" />
+          <button class="btn btn-success" ng-disabled="frm.$invalid">Go</button>
+          <button class="btn btn-danger" ng-click="clearCompleted()">Clear Completed</button>
+        </div> <!-- end form group -->
+      </form>
+      <ul class="list-group">
+        <li ng-repeat="todo in todos" class="list-group-item" ng-class="inactive" >
+          <input type="checkbox" ng-model="todo.done" ng-click="inactive='list-group-item disabled'"/>
+          <span ng-class="{'done':todo.done}" id="donetask">{{todo.title}}</span><!-- add line-through when task is done-->
+        </li>
+      </ul>
+    </div> <!-- end of jumbotron -->
+  </div><!-- end col-sm-12 -->   
+</div><!-- end of 'row' & todoController -->
