@@ -15,7 +15,10 @@ var ToDo = angular.module('ToDo',['ngRoute']);
       ];
       
       $scope.addTodo = function(){
-        $scope.todos.push({'title':$scope.newtodo,'done':false});
+        $scope.datecreated = new Date();
+        $scope.myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos");
+        $scope.todos.push({'title':$scope.newtodo,'done':false, 'timetag': $scope.datecreated.getDay() });
+        $scope.myData.push({'title':$scope.newtodo, 'done':false, 'timetag': $scope.datecreated.getDay() }); //push to Firebase
         $scope.newtodo = '';
       };
       $scope.clearCompleted = function(){
@@ -23,6 +26,13 @@ var ToDo = angular.module('ToDo',['ngRoute']);
           return !item.done;
         });
       };
-      
+      $scope.clearByDay = function(){
+        $scope.datecreated = new Date();
+        for(var todoIt = 0; todoIt< todos.length; todoIt ++){
+          if($scope.todos[todoIt].timetag - $scope.datecreated.getDay() === 6 || $scope.datecreated.getDay() - $scope.todos[todoIt].timetag === 6){
+            delete $scope.todos[todoIt];
+          }
+        }
+      }
     }]);
  
