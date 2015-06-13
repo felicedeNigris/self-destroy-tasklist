@@ -1,4 +1,4 @@
-var ToDo = angular.module('ToDo',['ngRoute']);
+var ToDo = angular.module('ToDo',['ngRoute','firebase']);
 
 
     ToDo.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
@@ -9,16 +9,22 @@ var ToDo = angular.module('ToDo',['ngRoute']);
     }]);
 
 
-    ToDo.controller('todoController',["$scope",function($scope){
+    ToDo.controller('todoController',["$scope","$firebaseArray",function($scope, $firebaseArray){ // injecting AngularFire 
+      /*
       $scope.todos = [
         {'title': 'Get Oil Change', 'done':false}
       ];
+      */
       
+      var myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos"); //create Firebase obj
+      $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
+
       $scope.addTodo = function(){
-        $scope.datecreated = new Date();
-        $scope.myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos");
-        $scope.todos.push({'title':$scope.newtodo,'done':false, 'timetag': $scope.datecreated.getDay() });
-        $scope.myData.push({'title':$scope.newtodo, 'done':false, 'timetag': $scope.datecreated.getDay() }); //push to Firebase
+
+        var datecreated = new Date().toString();
+        
+        $scope.todos.$add({'title':$scope.newtodo,'done':false, 'timetag': datecreated}); //push to Array 
+        
         $scope.newtodo = '';
       };
       $scope.clearCompleted = function(){
