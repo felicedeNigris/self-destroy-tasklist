@@ -18,7 +18,7 @@ ul {
 
 #currentTasks-bg{
   
-  margin-bottom:1px;
+  margin-bottom:-50px;
   width:100%;
 }
 
@@ -36,4 +36,13 @@ ul {
 .hiRank-off{
   visibility:hidden;
   
+}
+
+.nav{
+  background-color: white;
+  margin-bottom:-10px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron{
+  z-index:2;
 }
