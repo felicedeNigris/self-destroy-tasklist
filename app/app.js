@@ -10,11 +10,7 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
 
 
     ToDo.controller('todoController',["$scope","$firebaseArray",function($scope, $firebaseArray){ // injecting AngularFire 
-      /*
-      $scope.todos = [
-        {'title': 'Get Oil Change', 'done':false}
-      ];
-      */
+ 
       
       var myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos"); //create Firebase obj
       $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
@@ -27,11 +23,21 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
         
         $scope.newtodo = '';
       };
-      $scope.clearCompleted = function(){
-        $scope.todos = $scope.todos.filter(function(item){
-          return !item.done;
+
+
+      $scope.clearCompleted = function(){  // clear completed tasks
+        $scope.todos.forEach(function(todo){ //for each todo if 'todo.done' , remove it.
+          if(todo.done){
+            $scope.todos.$remove(todo);
+          }
         });
       };
+
+
+      $scope.clickDone = function(todo){
+        $scope.todos.$save(todo); //saves todo state when is checked
+      };  
+
       $scope.clearByDay = function(){
         $scope.datecreated = new Date();
         for(var todoIt = 0; todoIt< todos.length; todoIt ++){
@@ -39,6 +45,6 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
             delete $scope.todos[todoIt];
           }
         }
-      }
+      };
     }]);
  

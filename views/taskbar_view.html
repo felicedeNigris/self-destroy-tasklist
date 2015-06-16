@@ -10,13 +10,14 @@
         <div class="form-inline">
           <input type="text" class="form-control" name="newtodo" ng-model="newtodo" required="" id="inputform" />
           <button class="btn btn-success" ng-disabled="frm.$invalid">Go</button>
-          <button class="btn btn-danger" ng-click="clearCompleted()">Clear Completed</button>
+          <button class="btn btn-danger" ng-click="clearCompleted(todo)">Clear Completed</button>
         </div> <!-- end form group -->
       </form>
       <ul class="list-group">
-        <li ng-repeat="todo in todos" class="list-group-item" ng-class="inactive" >
-          <input type="checkbox" ng-model="todo.done" ng-click="inactive='list-group-item disabled'"/>
+        <li ng-repeat="todo in todos" ng-mouseenter="hover = true" ng-mouseleave="hover = false" class="list-group-item" ng-class="inactive" >
+          <input type="checkbox" ng-model="todo.done" ng-click="clickDone(todo)"/>
           <span ng-class="{'done':todo.done}" id="donetask">{{todo.title}}</span><!-- add line-through when task is done-->
+          <ng-include ng-class="{'hiRank-off': !hover}" src="'rankbutton.html'"></ng-include><!-- ng-include rankbutton-->
         </li>
       </ul>
 
@@ -28,3 +29,4 @@
   </div><!-- end col-sm-12 -->   
 </div><!-- end of 'row' & todoController -->
 
+      
