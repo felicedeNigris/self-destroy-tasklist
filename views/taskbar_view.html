@@ -1,41 +1,27 @@
 
-<div class="row">
-  <div class="col-sm-7" id="currentTasks-bg">
-    <h1>Task List</h1>
-  </div>
-  <div class="col-sm-12">
-    <div class="pull-right">
-      <ul class="nav nav-tabs" id="navtab-wrap">
-        <li class="active"><a href="" data-toggle="tab" aria-expanded="true">Home</a></li>
-        <li class=""><a href="" data-toggle="tag" aria-expanded="false">History</a></li>
-      </ul>  
-    </div><!-- end of pull right -->
-  </div><!-- end of ul nav tabs wrapper -->
-</div> <!-- end row -->
-<div class="row" ng-controller='todoController'><!-- link todoController wrapper-->
-  <div class="col-sm-12">
-    <div class="jumbotron">
-      <form name="frm" ng-submit="addTodo()" id="form-border">
-        <div class="form-inline">
-          <input type="text" class="form-control" name="newtodo" ng-model="newtodo" required="" id="inputform" />
-          <button class="btn btn-success" ng-disabled="frm.$invalid">Go</button>
-          <button class="btn btn-danger" ng-click="clearCompleted(todo)">Clear Completed</button>
-        </div> <!-- end form group -->
-      </form>
-      <ul class="list-group">
-        <li ng-repeat="todo in todos" ng-mouseenter="hover = true" ng-mouseleave="hover = false" class="list-group-item" ng-class="inactive" >
-          <input type="checkbox" ng-model="todo.done" ng-click="clickDone(todo)"/>
-          <span ng-class="{'done':todo.done}" id="donetask">{{todo.title}}</span><!-- add line-through when task is done-->
-          <ng-include ng-class="{'hiRank-off': !hover}" src="'rankbutton.html'"></ng-include><!-- ng-include rankbutton-->
-        </li>
-      </ul>
+<div class="container">
+  <!-- nav bar row used to be here. Found in index.html now -->
+  <div class="row" ng-controller='todoController'><!-- link todoController wrapper-->
+    <div class="col-sm-12">
+      <div class="jumbotron">
+        <form name="frm" ng-submit="addTodo()" id="form-border">
+          <div class="form-inline">
+            <input type="text" class="form-control" name="newtodo" ng-model="newtodo" required="" id="inputform" />
+            <button class="btn btn-success" ng-disabled="frm.$invalid">Add</button>
+            <button class="btn btn-danger" ng-click="clearCompleted(todo)">Clear Completed</button>
+          </div> <!-- end form group -->
+        </form>
+        <ul class="list-group">
+          <li ng-repeat="todo in todos" ng-mouseenter="hover = true" ng-mouseleave="hover = false" class="list-group-item" ng-class="inactive" >
+            <input type="checkbox" ng-model="todo.done" ng-click="clickDone(todo)"/>
+            <span ng-class="{'done':todo.done}" id="donetask">{{todo.title}}</span><!-- add line-through when task is done-->
+            <ng-include ng-class="{'hiRank-off': !hover}" src="'rankbutton.html'"></ng-include><!-- ng-include rankbutton-->
+          </li>
+        </ul>
 
-      
-      <!-- <p>{{todos}}}</p> -->
-  
+        <!-- <p>{{todos}}}</p> -->
 
-    </div> <!-- end of jumbotron -->
-  </div><!-- end col-sm-12 -->   
-</div><!-- end of 'row' & todoController -->
-
-      
+      </div> <!-- end of jumbotron -->
+    </div><!-- end col-sm-12 -->   
+  </div><!-- end of 'row' & todoController -->
+</div>  <!-- end container  --> 

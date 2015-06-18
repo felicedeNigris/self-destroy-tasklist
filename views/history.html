@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row" ng-controller='todoController'><!-- link todoController wrapper-->
+    <div class="col-sm-12">
+      <div class="jumbotron">
+        <ul class="list-group" ng-repeat="item in historytodos">
+          <li class="list-group-item">
+            <span>{{item.title}}</span>
+          </li>
+        </ul>
+
+        <p>{{historytodos}}</p>
+      </div> <!-- end of jumbotron -->
+    </div><!-- end col-sm-12 -->   
+  </div><!-- end of 'row' & todoController -->
+</div>  <!-- end container  -->
+      
+
+

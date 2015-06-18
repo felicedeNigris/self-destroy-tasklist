@@ -2,9 +2,18 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
 
 
     ToDo.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
-      $routeProvider.when('/',{templateUrl:"views/taskbar_view.html"});
-      $routeProvider.otherwise({redirectTo: '/'});
-      $locationProvider.html5Mode({enabled:true, requireBase: false});
+      $routeProvider.when('/',{
+        templateUrl:"views/taskbar_view.html"
+      });
+      $routeProvider.when('/history',{
+        templateUrl:"views/history.html"
+      });
+      $routeProvider.otherwise({
+        redirectTo: "/"
+      });
+      $locationProvider.html5Mode({
+        enabled:true, requireBase: false
+      });
       
     }]);
 
@@ -14,13 +23,14 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
       
       var myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos"); //create Firebase obj
       $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
+      $scope.historytodos = [{'title':'ok'}];
 
       $scope.addTodo = function(){
 
         var datecreated = new Date().toString();
         
         $scope.todos.$add({'title':$scope.newtodo,'done':false, 'timetag': datecreated}); //push to Array 
-        
+        $scope.historytodos.push({'title':$scope.newtodo}); //push historytodos locally referenced
         $scope.newtodo = '';
       };
 
@@ -36,7 +46,7 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
 
       $scope.clickDone = function(todo){
         $scope.todos.$save(todo); //saves todo state when is checked
-      };  
+      };
 
       $scope.clearByDay = function(){
         $scope.datecreated = new Date();
