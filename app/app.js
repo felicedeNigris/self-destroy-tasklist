@@ -23,14 +23,14 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
       
       var myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos"); //create Firebase obj
       $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
-      $scope.historytodos = [{'title':'ok'}];
+      $scope.historytodos = [];
 
       $scope.addTodo = function(){
 
         var datecreated = new Date().toString();
         
         $scope.todos.$add({'title':$scope.newtodo,'done':false, 'timetag': datecreated}); //push to Array 
-        $scope.historytodos.push({'title':$scope.newtodo}); //push historytodos locally referenced
+  
         $scope.newtodo = '';
       };
 
