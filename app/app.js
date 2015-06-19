@@ -48,13 +48,26 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
         $scope.todos.$save(todo); //saves todo state when is checked
       };
 
-      $scope.clearByDay = function(){
-        $scope.datecreated = new Date();
-        for(var todoIt = 0; todoIt< todos.length; todoIt ++){
-          if($scope.todos[todoIt].timetag - $scope.datecreated.getDay() === 6 || $scope.datecreated.getDay() - $scope.todos[todoIt].timetag === 6){
-            delete $scope.todos[todoIt];
+      $scope.clearByDay = function(){  // clear completed tasks
+        var today = new Date().getUTCDate();
+        $scope.todos.forEach(function(todo){ //if todo is greater or equal to 2 delete
+          if( today - todo.timetag.getUTCDate() >=2){
+            $scope.todos.$remove(todo);
           }
-        }
+        });
       };
+
+      $scope.shoutOut = function(){
+        console.log("Hello");
+      };
+
+      $scope.moveUpPriority = function($index){
+        var toMove = $scope.todos[$index];
+        delete $scope.todos[$index];
+        $scope.todos.splice(0,0, toMove);
+        $scope.todos.$save();
+      };
+
+
     }]);
  
