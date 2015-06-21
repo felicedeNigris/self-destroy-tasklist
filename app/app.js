@@ -57,16 +57,24 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
         });
       };
 
-      $scope.shoutOut = function(){
-        console.log("Hello");
-      };
-
+     
       $scope.moveUpPriority = function($index){
-        var toMove = $scope.todos[$index];
-        delete $scope.todos[$index];
-        $scope.todos.splice(0,0, toMove);
-        $scope.todos.$save();
-      };
+        var toMove = $scope.todos[$index]; //save copy of $index todo
+        
+       $scope.todos.splice($index,1); //removes item at $index 
+       $scope.todos.splice(0,0, toMove); //adds item toMove to the start of array
+
+       var backup = $scope.todos; //copy back up array
+
+
+       for(var b = 0; b<= $scope.todos.length; b++){
+        $scope.todos.$remove($scope.todos[b]); //remove items from array
+       }
+
+       for(var i = 0; i<= backup.length; i++){
+        $scope.todos.$add(backup[i]); // add items from back up array
+       }
+     };
 
 
     }]);
