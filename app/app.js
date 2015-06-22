@@ -18,12 +18,13 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
     }]);
 
 
-    ToDo.controller('todoController',["$scope","$firebaseArray",function($scope, $firebaseArray){ // injecting AngularFire 
+    ToDo.controller('todoController',["$scope","$firebaseArray", function($scope, $firebaseArray, ToDoData){ // injecting AngularFire & ToDoData Service 
  
       
-      var myData = new Firebase("https://f07yl5amjvh.firebaseio-demo.com/ToDos"); //create Firebase obj
+      var myData = new Firebase("https://mia-lista.firebaseio.com/ToDos"); //create Firebase obj
       $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
-      $scope.historytodos = [];
+
+      $scope.historytodos = [{'title': "Old Task", 'done':true, 'timetag':new Date().toString()}];
 
       $scope.addTodo = function(){
 
@@ -33,7 +34,7 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
   
         $scope.newtodo = '';
       };
-
+      
 
       $scope.clearCompleted = function(){  // clear completed tasks
         $scope.todos.forEach(function(todo){ //for each todo if 'todo.done' , remove it.
@@ -46,6 +47,8 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
 
       $scope.clickDone = function(todo){
         $scope.todos.$save(todo); //saves todo state when is checked
+        $scope.historytodos.push(todo); //push to history array 
+        //debugger;
       };
 
       $scope.clearByDay = function(){  // clear completed tasks
@@ -75,6 +78,13 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
         $scope.todos.$add(backup[i]); // add items from back up array
        }
      };
+     /*
+     $scope.addToHistory = function(todo){
+      if(todo.done){
+      $scope.historytodos.push(todo);
+        }
+     };
+    */
 
 
     }]);
