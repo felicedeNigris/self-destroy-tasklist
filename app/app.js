@@ -17,14 +17,26 @@ var ToDo = angular.module('ToDo',['ngRoute','firebase']);
       
     }]);
 
+    Todo.value('fbURL', "https://mia-lista.firebaseio.com/ToDos") //Firebase URL value service
+    .service('fbRef',function(fbURL){ //Firebase Data Reference Service
+      return new Firebase(fbURL);
+    })
+    .service('fbArr',function(fbRef){ //Firebase Array service
+      $scope.todos = $firebaseArray(fbRef);
+      return $scope.todos;
+    });
 
-    ToDo.controller('todoController',["$scope","$firebaseArray", function($scope, $firebaseArray, ToDoData){ // injecting AngularFire & ToDoData Service 
+
+
+    ToDo.controller('todoController',["$scope","$firebaseArray", "fbArr", function($scope, $firebaseArray, fbArr){ // injecting AngularFire & ToDoData Service 
  
       
-      var myData = new Firebase("https://mia-lista.firebaseio.com/ToDos"); //create Firebase obj
-      $scope.todos = $firebaseArray(myData); //Reading Database and adding to todos variable 
+      //var myData = new Firebase("https://mia-lista.firebaseio.com/ToDos"); //create Firebase obj    COMMENT OUT BECAUSE THESE 2 LINES ARE IN SERVICE
+      //$scope.todos = $firebaseArray(fbRef); //Reading Database and adding to todos variable 
 
-      $scope.historytodos = [{'title': "Old Task", 'done':true, 'timetag':new Date().toString()}];
+      //return $scope.todos;
+
+      //$scope.historytodos = [{'title': "Old Task", 'done':true, 'timetag':new Date().toString()}];
 
       $scope.addTodo = function(){
 
