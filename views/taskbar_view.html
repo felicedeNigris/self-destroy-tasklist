@@ -6,7 +6,7 @@
       <div class="jumbotron">
         <form name="frm" ng-submit="addTodo()" id="form-border">
           <div class="form-inline">
-            <input type="text" class="form-control" name="newtodo" ng-model="newtodo" required="" id="inputform" />
+            <input type="text" class="form-control" name="newtodo" ng-model="newtodo.title" required="" id="inputform" />
             <button class="btn btn-success" ng-disabled="frm.$invalid">Add</button>
             <button class="btn btn-danger" ng-click="clearCompleted(todo)">Clear Completed</button>
           </div> <!-- end form group -->
