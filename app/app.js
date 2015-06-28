@@ -30,31 +30,25 @@ ToDo.service("TodoService",function($firebaseArray){
       }
     );
   };
-});
 
-
-//  var datecreated = new Date().toString(); //date obj
-/*
-.factory("PriorityFactory", function(TodoFactory){
-  function Priority($index){
-  var toMove = todos[$index]; //save copy of $index todo
+  this.prioritize= function($index){
+    var toMove = todoArray[$index]; //save copy of $index todo
           
-    todos.splice($index,1); //removes item at $index 
-    todos.splice(0,0, toMove); //adds item toMove to the start of array
+    todoArray.splice($index,1); //removes item at $index 
+    todoArray.splice(0,0, toMove); //adds item toMove to the start of array
 
-    var backup = todos; //copy back up array
+    var backup = todoArray; //copy back up array
 
-    for(var b = 0; b<= todos.length; b++){
-    todos.$remove(todos[b]); //remove items from array
+    for(var b = 0; b<= todoArray.length; b++){
+    todoArray.$remove(todoArray[b]); //remove items from array
     }
     for(var i = 0; i<= backup.length; i++){
-    todos.$add(backup[i]); // add items from back up array
+    todoArray.$add(backup[i]); // add items from back up array
     }
-  }
-  return Priority($index); 
+  
+  };
+  
 });
-*/
-
 
 
 // CONFIG
@@ -98,11 +92,11 @@ ToDo.service("TodoService",function($firebaseArray){
         todo.done = true;
         TodoService.updateTodo(todo); //updates todo state
       };
-      /*
+      
       $scope.moveUpPriority = function($index){
-        TodoService.Priority($index);
+        TodoService.prioritize($index);
       };
-      */
+      
     }]);
 
 
