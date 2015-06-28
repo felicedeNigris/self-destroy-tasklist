@@ -50,6 +50,28 @@ ToDo.service("TodoService",function($firebaseArray){
   
 });
 
+ToDo.service("HistoryService",function($firebaseArray){
+
+  var historyRef = new Firebase("https://mia-lista.firebaseio.com/"+"history"); //link to firebase 
+
+  var historyArray = $firebaseArray(historyRef); // create a history array 
+
+  this.getHistory = function(){
+    return historyArray; //returns historyArray
+  };
+
+  this.addtoHistory = function(todo){
+    return historyArray.$add(todo);
+  };
+
+  this.clearAll = function(todo){
+    historyArray.forEach(function(todo){ //for each todo if 'todo.done' , remove it.
+        historyArray.$remove(todo);
+        }
+    );
+  };
+
+});
 
 // CONFIG
 
@@ -73,14 +95,18 @@ ToDo.service("TodoService",function($firebaseArray){
 
 //CONTROLLERS
 
-    ToDo.controller('todoController',['$scope','TodoService',function($scope,TodoService){ // injecting AngularFire & Factory
+    ToDo.controller('todoController',['$scope','TodoService', 'HistoryService', function($scope,TodoService, HistoryService){ // injecting AngularFire & Factory
       
       $scope.todos = TodoService.getTodos();
       
       $scope.newtodo = {'title':'','done':false,'timetag':new Date().toString()};
+
+      $scope.historytodos = HistoryService.getHistory(); // get history object
+
+      $scope.addhistory = {'title':''}; // blank history todo array
       
       $scope.addTodo = function(){
-        console.log($scope.newtodo);
+        //console.log($scope.newtodo);
         TodoService.addTodo($scope.newtodo); //add title to todo array
       };
 
@@ -89,12 +115,16 @@ ToDo.service("TodoService",function($firebaseArray){
       };
 
       $scope.clickDone = function(todo){
-        todo.done = true;
         TodoService.updateTodo(todo); //updates todo state
+        HistoryService.addtoHistory(todo); //add done todo to history array
       };
       
       $scope.moveUpPriority = function($index){
         TodoService.prioritize($index);
+      };
+
+      $scope.clearHistory = function(todo){
+        HistoryService.clearAll(todo);
       };
       
     }]);

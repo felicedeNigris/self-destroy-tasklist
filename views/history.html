@@ -2,13 +2,14 @@
   <div class="row" ><!-- link todoController wrapper-->
     <div class="col-sm-12">
       <div class="jumbotron">
+        <button class = "btn btn-danger btn-lg btn-block" ng-click="clearHistory()">Clear History</button>
         <ul class="list-group" ng-repeat="item in historytodos">
           <li class="list-group-item">
             <span>{{item.title}}</span>
           </li>
         </ul>
 
-        <p>{{historytodos}}</p>
+        <!--<p>{{historytodos}}</p>-->
       </div> <!-- end of jumbotron -->
     </div><!-- end col-sm-12 -->   
   </div><!-- end of 'row' & todoController -->

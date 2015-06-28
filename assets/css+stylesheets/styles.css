@@ -46,3 +46,8 @@ ul {
 .container .jumbotron, .container-fluid .jumbotron{
   z-index:2;
 }
+
+.list-group{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
