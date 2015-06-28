@@ -14,5 +14,6 @@ This web app is a tool for tracking generated tasks.
 * Clear History button
 *
 ---------------------------------------------
->This app is deployed with Heroku. 
-Go To:  http://tasklist-app.herokuapp.com/
+
+########This app is deployed with Heroku. 
+>Go To:  http://tasklist-app.herokuapp.com/
