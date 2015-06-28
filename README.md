@@ -12,6 +12,7 @@ This web app is a tool for tracking generated tasks.
 * Option to view task history.
 * Make 'High Priority' button on hover.
 * Clear History button
+*
 ---------------------------------------------
 >This app is deployed with Heroku. 
 Go To:  http://tasklist-app.herokuapp.com/
